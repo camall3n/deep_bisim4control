@@ -20,7 +20,7 @@ from video import VideoRecorder
 from agent.baseline_agent import BaselineAgent
 from agent.bisim_agent import BisimAgent
 from agent.deepmdp_agent import DeepMDPAgent
-from agents.navigation.carla_env import CarlaEnv
+# from agents.navigation.carla_env import CarlaEnv
 
 
 def parse_args():
@@ -261,7 +261,7 @@ def make_agent(obs_shape, action_shape, args, device):
 
     if args.load_encoder:
         model_dict = agent.actor.encoder.state_dict()
-        encoder_dict = torch.load(args.load_encoder) 
+        encoder_dict = torch.load(args.load_encoder)
         encoder_dict = {k[8:]: v for k, v in encoder_dict.items() if 'encoder.' in k}  # hack to remove encoder. string
         agent.actor.encoder.load_state_dict(encoder_dict)
         agent.critic.encoder.load_state_dict(encoder_dict)
