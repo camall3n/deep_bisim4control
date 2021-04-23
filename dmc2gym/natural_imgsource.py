@@ -8,6 +8,8 @@
 import numpy as np
 import cv2
 import imageio
+import skvideo
+skvideo.setFFmpegPath('/gpfs/runtime/opt/ffmpeg/3.2.4/bin/')
 import skvideo.io
 import random
 import tqdm
