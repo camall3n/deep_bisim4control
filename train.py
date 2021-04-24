@@ -323,7 +323,7 @@ def main():
         env = utils.FrameStack(env, k=args.frame_stack)
         eval_env = utils.FrameStack(eval_env, k=args.frame_stack)
 
-    args.work_dir = args.work_dir + '/' + args.tag + '/seed_' + args.seed
+    args.work_dir = args.work_dir + '/' + args.tag
     utils.make_dir(args.work_dir)
     video_dir = utils.make_dir(os.path.join(args.work_dir, 'video'))
     model_dir = utils.make_dir(os.path.join(args.work_dir, 'model'))
