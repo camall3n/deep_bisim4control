@@ -47,7 +47,7 @@ def parse_args():
     parser.add_argument('--bisim_coef', default=0.5, type=float, help='coefficient for bisim terms')
     parser.add_argument('--load_encoder', default=None, type=str)
     # eval
-    parser.add_argument('--eval_freq', default=10, type=int)  # TODO: master had 10000
+    parser.add_argument('--eval_freq', default=1000, type=int)
     parser.add_argument('--num_eval_episodes', default=20, type=int)
     # critic
     parser.add_argument('--critic_lr', default=1e-3, type=float)
@@ -368,7 +368,7 @@ def main():
                 L.dump(step)
 
             # evaluate agent periodically
-            if episode % args.eval_freq == 0:
+            if step % args.eval_freq == 0:
                 L.log('eval/episode', episode, step)
                 evaluate(eval_env, agent, video, args.num_eval_episodes, L, step)
                 if args.save_model:
