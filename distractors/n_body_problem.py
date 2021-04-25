@@ -7,6 +7,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+import os
 
 from scipy.integrate import odeint
 
@@ -140,6 +141,7 @@ class Planets(object):
         if file_name is None:
             file_name = self.__class__.__name__.lower() + '.gif'
         file_name = 'images/' + file_name
+        os.make_dirs('images', exist_ok=True)
         print('Saving file {} ...'.format(file_name))
         anim.save(file_name, writer='imagemagick')
         plt.close(fig)
