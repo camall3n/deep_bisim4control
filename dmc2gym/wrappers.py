@@ -114,7 +114,7 @@ class DMCWrapper(core.Env):
                 if img_source == "images":
                     self._bg_source = natural_imgsource.RandomImageSource(shape2d, files, grayscale=True, total_frames=total_frames)
                 elif img_source == "video":
-                    self._bg_source = natural_imgsource.RandomVideoSource(shape2d, files, grayscale=False, total_frames=total_frames)
+                    self._bg_source = natural_imgsource.RandomVideoSource(shape2d, files, grayscale=True, total_frames=total_frames)
                 else:
                     raise Exception("img_source %s not defined." % img_source)
 
