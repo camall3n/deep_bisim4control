@@ -53,9 +53,6 @@ def module_hash(module):
 
 def make_dir(dir_path):
     os.makedirs(dir_path, exist_ok=True)
-    # try:
-    # except OSError:
-    #     pass
     return dir_path
 
 
