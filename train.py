@@ -41,7 +41,7 @@ def parse_args():
     parser.add_argument('--agent', default='bisim', type=str, choices=['baseline', 'bisim', 'deepmdp'])
     parser.add_argument('--init_steps', default=1000, type=int)
     parser.add_argument('--num_train_steps', default=500000, type=int)
-    parser.add_argument('--batch_size', default=128, type=int)
+    parser.add_argument('--batch_size', default=512, type=int)
     parser.add_argument('--hidden_dim', default=1024, type=int)
     parser.add_argument('--k', default=3, type=int, help='number of steps for inverse model')
     parser.add_argument('--bisim_coef', default=0.5, type=float, help='coefficient for bisim terms')
