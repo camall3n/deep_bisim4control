@@ -36,7 +36,7 @@ def parse_args():
     parser.add_argument('--img_source', default=None, type=str, choices=['color', 'noise', 'images', 'video', 'none'])
     parser.add_argument('--total_frames', default=1000, type=int)
     # replay buffer
-    parser.add_argument('--replay_buffer_capacity', default=500000, type=int)
+    parser.add_argument('--replay_buffer_capacity', default=250000, type=int)
     # train
     parser.add_argument('--agent', default='bisim', type=str, choices=['baseline', 'bisim', 'deepmdp'])
     parser.add_argument('--init_steps', default=1000, type=int)
