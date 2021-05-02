@@ -306,6 +306,7 @@ class BaselineAgent(object):
 
     def update(self, replay_buffer, L, step):
         if self.decoder_type == 'inverse':
+            raise NotImplementedError('replay_buffer.sample(k=True) was disabled for memory efficiency')
             obs, action, reward, next_obs, not_done, k_obs = replay_buffer.sample(k=True)
         else:
             obs, action, _, reward, next_obs, not_done = replay_buffer.sample()

@@ -363,6 +363,7 @@ def main():
         if done:
             if args.decoder_type == 'inverse':
                 for i in range(1, args.k):  # fill k_obs with 0s if episode is done
+                    raise NotImplementedError('replay_buffer.sample(k=True) was disabled for memory efficiency')
                     replay_buffer.k_obses[replay_buffer.idx - i] = 0
             if step > 0:
                 L.log('train/duration', time.time() - start_time, step)
@@ -412,7 +413,7 @@ def main():
         episode_reward += reward
 
         replay_buffer.add(obs, action, curr_reward, reward, next_obs, done_bool)
-        np.copyto(replay_buffer.k_obses[replay_buffer.idx - args.k], next_obs)
+        # np.copyto(replay_buffer.k_obses[replay_buffer.idx - args.k], next_obs)
 
         obs = next_obs
         episode_step += 1

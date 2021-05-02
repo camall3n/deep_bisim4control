@@ -75,11 +75,11 @@ class ReplayBuffer(object):
         self.batch_size = batch_size
         self.device = device
 
-        # the proprioceptive obs is stored as float32, pixels obs as uint8
+        # the proprioceptive obs is stored as float32, pixels obs as uint8 (9, 84, 84)
         obs_dtype = np.float32 if len(obs_shape) == 1 else np.uint8
 
         self.obses = np.empty((capacity, *obs_shape), dtype=obs_dtype)
-        self.k_obses = np.empty((capacity, *obs_shape), dtype=obs_dtype)
+        # self.k_obses = np.empty((capacity, *obs_shape), dtype=obs_dtype)
         self.next_obses = np.empty((capacity, *obs_shape), dtype=obs_dtype)
         self.actions = np.empty((capacity, *action_shape), dtype=np.float32)
         self.curr_rewards = np.empty((capacity, 1), dtype=np.float32)
@@ -114,8 +114,8 @@ class ReplayBuffer(object):
             self.next_obses[idxs], device=self.device
         ).float()
         not_dones = torch.as_tensor(self.not_dones[idxs], device=self.device)
-        if k:
-            return obses, actions, rewards, next_obses, not_dones, torch.as_tensor(self.k_obses[idxs], device=self.device)
+        # if k:
+        #     return obses, actions, rewards, next_obses, not_dones, torch.as_tensor(self.k_obses[idxs], device=self.device)
         return obses, actions, curr_rewards, rewards, next_obses, not_dones
 
     def save(self, save_dir):
